@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="application">
+	<head>
+		<base href="http://cameras/"></base>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+		<title>cameras</title>
+	</head>
+	<body ng-controller="IndexController as crtl">
+		<section class="camera"
+			ng-repeat="camera in crtl.cameras">
+			<h1>{{camera.name}}</h1>
+			<ul>
+				<li>
+					<a ng-click="crtl.moveUp(camera)">
+						<span>Up</span>
+					</a>
+				</li>
+				<li>
+					<a ng-click="crtl.moveLeft(camera)">
+						<span>Left</span>
+					</a>
+				</li>
+				<li>
+					<a ng-click="crtl.moveRight(camera)">
+						<span>Right</span>
+					</a>
+				</li>
+				<li>
+					<a ng-click="crtl.moveDown(camera)">
+						<span>Down</span>
+					</a>
+				</li>
+			</ul>
+			<img alt="camera" width="100%"
+				ng-src="{{camera.endpoint}}/?action=stream" />
+		</section>
+		<script src="/application.js" type="text/javascript"></script>
+	</body>
+</html>
