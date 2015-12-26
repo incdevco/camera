@@ -61,7 +61,7 @@ application.route("/move-up")
 
     var servoblaster = fs.createWriteStream("/dev/servoblaster");
 
-    servoblaster.write("5=+10");
+    servoblaster.write("5=+10\n");
 
     servoblaster.on("error", function (exception) {
 
@@ -70,7 +70,7 @@ application.route("/move-up")
     });
 
     servoblaster.end();
-    
+
     console.log("moved-up");
 
     response.json(true);
