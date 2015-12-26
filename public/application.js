@@ -1,12 +1,21 @@
 angular.module("application",[])
-.constant("NECameraEndpoint", "http:/10.0.0.3:2180")
-.constant("NWCameraEndpoint", "http:/10.0.0.3:2080")
+.constant("NEApiEndpoint", "http://10.0.0.3:2180")
+.constant("NWApiEndpoint", "http://10.0.0.3:2080")
+.constant("NEStreamEndpoint", "http://10.0.0.3:2188")
+.constant("NWStreamEndpoint", "http://10.0.0.3:2088")
 .controller("IndexController", [
   "CameraService",
-  "NECameraEndpoint",
-  "NWCameraEndpoint",
+  "NEApiEndpoint",
+  "NWApiEndpoint",
+  "NEStreamEndpoint",
+  "NWStreamEndpoint",
   "$scope",
-  function (cameraService, NECameraEndpoint, NWCameraEndpoint, $scope) {
+  function (cameraService,
+    NECameraEndpoint,
+    NWCameraEndpoint,
+    NEStreamEndpoint,
+    NWStreamEndpoint,
+    $scope) {
     "use strict";
 
     var crtl = this;
@@ -15,11 +24,13 @@ angular.module("application",[])
       {
         endpoint: NECameraEndpoint,
         name: "North East",
+        stream: NEStreamEndpoint,
         value: "ne"
       },
       {
         endpoint: NWCameraEndpoint,
         name: "North West",
+        stream: NWStreamEndpoint,
         value: "nw"
       }
     ];

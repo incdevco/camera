@@ -32,7 +32,8 @@
 				</li>
 			</ul>
 			<img alt="camera" width="100%"
-				ng-src="{{camera.endpoint}}/?action=stream" />
+				ng-if="camera.show"
+				ng-src="{{camera.stream}}/?action=stream" />
 		</section>
 		<script src="/application.js" type="text/javascript"></script>
 	</body>

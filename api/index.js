@@ -2,6 +2,15 @@ var application = require("express")(),
   fs = require("fs"),
   server;
 
+application.use(function (request, response, next) {
+
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Methods", "POST");
+  next();
+
+});
+
 application.route("/move-down")
   .post(function (request, response) {
 
