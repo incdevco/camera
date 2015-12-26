@@ -24,6 +24,8 @@ application.route("/move-down")
 
     servoblaster.write("5=-10\n");
 
+    console.log("moved-down");
+
     response.json(true);
 
   });
@@ -32,6 +34,8 @@ application.route("/move-left")
   .post(function (request, response) {
 
     servoblaster.write("6=-10\n");
+
+    console.log("moved-left");
 
     response.json(true);
 
@@ -42,6 +46,8 @@ application.route("/move-right")
 
     servoblaster.write("6=+10\n");
 
+    console.log("moved-right");
+
     response.json(true);
 
   });
@@ -50,8 +56,6 @@ application.route("/move-up")
   .post(function (request, response) {
 
     servoblaster.write("5=+10\n");
-
-    //servoblaster.end();
 
     console.log("moved-up");
 
@@ -64,3 +68,20 @@ server = application.listen(8000, function () {
   console.log("API Listening on 8000");
 
 });
+
+function serverClose() {
+  "use strict";
+
+  server.close(function () {
+
+    servoblaster.end();
+
+    process.exit();
+
+  });
+
+}
+
+process.on("SIGINT", serverClose);
+
+process.on("SIGTERM", serverClose);

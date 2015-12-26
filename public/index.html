@@ -2,38 +2,32 @@
 <html lang="en" ng-app="application">
 	<head>
 		<base href="http://cameras/"></base>
+		<link rel="stylesheet" href="/css/master.css" media="screen" charset="utf-8">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-		<title>cameras</title>
+		<title>Cameras</title>
 	</head>
 	<body ng-controller="IndexController as crtl">
 		<section class="camera"
 			ng-repeat="camera in crtl.cameras">
-			<h1>{{camera.name}}</h1>
+			<h1>
+				<span>{{camera.name}}</span>
+				<a ng-click="camera.show=!camera.show">
+					<span ng-hide="camera.show">Show</span>
+					<span ng-show="camera.show">Hide</span>
+				</a>
+			</h1>
 			<ul>
-				<li>
-					<a ng-click="crtl.moveUp(camera)">
-						<span>Up</span>
-					</a>
+				<li class="up">
+					<a ng-click="crtl.moveUp(camera)"><span>Up</span></a>
 				</li>
-				<li>
-					<a ng-click="crtl.moveLeft(camera)">
-						<span>Left</span>
-					</a>
+				<li class="left">
+					<a ng-click="crtl.moveLeft(camera)"><span>Left</span></a>
 				</li>
-				<li>
-					<a ng-click="crtl.moveRight(camera)">
-						<span>Right</span>
-					</a>
+				<li class="right">
+					<a ng-click="crtl.moveRight(camera)"><span>Right</span></a>
 				</li>
-				<li>
-					<a ng-click="crtl.moveDown(camera)">
-						<span>Down</span>
-					</a>
-				</li>
-				<li>
-					<a ng-click="camera.show=!camera.show">
-						<span>Show</span>
-					</a>
+				<li class="down">
+					<a ng-click="crtl.moveDown(camera)"><span>Down</span></a>
 				</li>
 			</ul>
 			<img alt="camera" width="100%"

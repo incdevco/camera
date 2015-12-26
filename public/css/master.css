@@ -1,0 +1,65 @@
+/* @override http://cameras/css/master.css */
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+section.camera {
+	float: left;
+	width: calc(99% - 2px);
+	border-style: solid;
+	border-width: 1px;
+	margin: 0.5%;
+}
+
+section.camera h1 {
+	float: left;
+	width: 98%;
+	margin: 1%;
+}
+
+section.camera h1 a {
+	float: right;
+	font-size: 0.6em;
+}
+
+section.camera ul {
+	float: left;
+	list-style: none;
+	margin: 5px;
+	padding: 0;
+}
+
+section.camera ul li {
+	float: left;
+}
+
+section.camera ul li a {
+	display: block;
+}
+
+section.camera ul li.up {
+	margin-right: 20px;
+	margin-left: 20px;
+}
+
+section.camera ul li.left {
+	clear: left;
+	margin-right: 5px;
+}
+
+section.camera ul li.right {
+
+}
+
+section.camera ul li.down {
+	clear: left;
+	margin-right: 12px;
+	margin-left: 12px;
+}
+
+section.camera img {
+	float: right;
+	width: 85%;
+}
