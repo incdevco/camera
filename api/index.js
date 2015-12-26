@@ -2,6 +2,8 @@ var application = require("express")(),
   fs = require("fs"),
   server;
 
+var servoblaster = fs.createWriteStream("/dev/servoblaster");
+
 application.use(function (request, response, next) {
 
   response.header("Access-Control-Allow-Origin", "*");
@@ -14,76 +16,60 @@ application.use(function (request, response, next) {
 application.route("/move-down")
   .post(function (request, response) {
 
-    fs.writeFile("/dev/servoblaster", "5=-10", function (exception) {
+    servoblaster.write("5=-10");
 
-      if (exception) {
+    servoblaster.on("error", function (exception) {
 
-        response.status(500).json(exception);
-
-      } else {
-
-        response.json(true);
-
-      }
+      response.status(500).json(exception);
 
     });
+
+    response.json(true);
 
   });
 
 application.route("/move-left")
   .post(function (request, response) {
 
-    fs.writeFile("/dev/servoblaster", "6=-10", function (exception) {
+    servoblaster.write("6=-10");
 
-      if (exception) {
+    servoblaster.on("error", function (exception) {
 
-        response.status(500).json(exception);
-
-      } else {
-
-        response.json(true);
-
-      }
+      response.status(500).json(exception);
 
     });
+
+    response.json(true);
 
   });
 
 application.route("/move-right")
   .post(function (request, response) {
 
-    fs.writeFile("/dev/servoblaster", "6=+10", function (exception) {
+    servoblaster.write("6=+10");
 
-      if (exception) {
+    servoblaster.on("error", function (exception) {
 
-        response.status(500).json(exception);
-
-      } else {
-
-        response.json(true);
-
-      }
+      response.status(500).json(exception);
 
     });
+
+    response.json(true);
 
   });
 
 application.route("/move-up")
   .post(function (request, response) {
 
-    fs.writeFile("/dev/servoblaster", "5=+10", function (exception) {
+    servoblaster.write("5=+10");
 
-      if (exception) {
+    servoblaster.on("error", function (exception) {
 
-        response.status(500).json(exception);
-
-      } else {
-
-        response.json(true);
-
-      }
+      response.status(500).json(exception);
 
     });
+
+    response.json(true);
 
   });
 
