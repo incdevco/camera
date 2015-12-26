@@ -22,13 +22,7 @@ application.use(function (request, response, next) {
 application.route("/move-down")
   .post(function (request, response) {
 
-    servoblaster.write("5=-10");
-
-    servoblaster.on("error", function (exception) {
-
-      response.status(500).json(exception);
-
-    });
+    servoblaster.write("5=-10\n");
 
     response.json(true);
 
@@ -37,13 +31,7 @@ application.route("/move-down")
 application.route("/move-left")
   .post(function (request, response) {
 
-    servoblaster.write("6=-10");
-
-    servoblaster.on("error", function (exception) {
-
-      response.status(500).json(exception);
-
-    });
+    servoblaster.write("6=-10\n");
 
     response.json(true);
 
@@ -52,13 +40,7 @@ application.route("/move-left")
 application.route("/move-right")
   .post(function (request, response) {
 
-    servoblaster.write("6=+10");
-
-    servoblaster.on("error", function (exception) {
-
-      response.status(500).json(exception);
-
-    });
+    servoblaster.write("6=+10\n");
 
     response.json(true);
 
