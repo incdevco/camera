@@ -64,7 +64,9 @@ application.route("/move-to/:position")
 
     var keys, position;
 
-    postion = positions[request.params.position];
+    position = positions[request.params.position];
+
+    console.log("position", position);
 
     Object.keys(position).forEach(function (key) {
 

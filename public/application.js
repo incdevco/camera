@@ -24,12 +24,18 @@ angular.module("application",[])
       {
         endpoint: NECameraEndpoint,
         name: "North East",
+        positions: [
+          "home"
+        ],
         stream: NEStreamEndpoint,
         value: "ne"
       },
       {
         endpoint: NWCameraEndpoint,
         name: "North West",
+        positions: [
+          "home"
+        ],
         stream: NWStreamEndpoint,
         value: "nw"
       }
@@ -50,6 +56,12 @@ angular.module("application",[])
     this.moveRight = function (camera) {
 
       cameraService.moveRight(camera);
+
+    };
+
+    this.moveTo = function (camera) {
+
+      cameraService.moveTo(camera);
 
     };
 
@@ -80,6 +92,11 @@ angular.module("application",[])
       moveRight: function (camera) {
 
         return $http.post(camera.endpoint + "/move-right");
+
+      },
+      moveTo: function (camera) {
+
+        return $http.post(camera.endpoint + "/move-to/" + camera.position);
 
       },
       moveUp: function (camera) {

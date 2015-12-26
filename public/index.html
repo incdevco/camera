@@ -29,6 +29,13 @@
 				<li class="down">
 					<a ng-click="crtl.moveDown(camera)"><span>Down</span></a>
 				</li>
+				<li>
+					<select class="" name="moveTo"
+						ng-change="crtl.moveTo(camera)"
+						ng-model="camera.position"
+						ng-options="position as position for position in camera.positions">
+					</select>
+				</li>
 			</ul>
 			<img alt="camera" width="100%"
 				ng-if="camera.show"
