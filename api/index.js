@@ -2,6 +2,13 @@ var application = require("express")(),
   fs = require("fs"),
   server;
 
+var distance = "5";
+var positions = {
+  home: {
+    "5": "195",
+    "6": "120"
+  }
+};
 var servoblaster = fs.createWriteStream("/dev/servoblaster");
 
 servoblaster.on("error", function (exception) {
@@ -22,7 +29,7 @@ application.use(function (request, response, next) {
 application.route("/move-down")
   .post(function (request, response) {
 
-    servoblaster.write("5=-10\n");
+    servoblaster.write("5=-" + distance + "\n");
 
     console.log("moved-down");
 
@@ -33,7 +40,7 @@ application.route("/move-down")
 application.route("/move-left")
   .post(function (request, response) {
 
-    servoblaster.write("6=-10\n");
+    servoblaster.write("6=-" + distance + "\n");
 
     console.log("moved-left");
 
@@ -44,9 +51,28 @@ application.route("/move-left")
 application.route("/move-right")
   .post(function (request, response) {
 
-    servoblaster.write("6=+10\n");
+    servoblaster.write("6=+" + distance + "\n");
 
     console.log("moved-right");
+
+    response.json(true);
+
+  });
+
+application.route("/move-to/:position")
+  .post(function (request, response) {
+
+    var keys, position;
+
+    postion = positions[request.params.position];
+
+    Object.keys(position).forEach(function (key) {
+
+      servoblaster.write(key + "=" + position[key] + "\n");
+
+    });
+
+    console.log("moved to ", request.params.position);
 
     response.json(true);
 
@@ -55,7 +81,7 @@ application.route("/move-right")
 application.route("/move-up")
   .post(function (request, response) {
 
-    servoblaster.write("5=+10\n");
+    servoblaster.write("5=+" + distance + "\n");
 
     console.log("moved-up");
 
