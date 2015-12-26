@@ -63,6 +63,8 @@ application.route("/move-up")
 
     servoblaster.write("5=+10");
 
+    console.log("moved-up");
+
     servoblaster.on("error", function (exception) {
 
       response.status(500).json(exception);
