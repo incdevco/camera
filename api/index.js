@@ -2,6 +2,14 @@ var application = require("express")(),
   fs = require("fs"),
   server;
 
+var servoblaster = fs.createWriteStream("/dev/servoblaster");
+
+servoblaster.on("error", function (exception) {
+
+  console.log("servoblaster error", exception);
+
+});
+
 application.use(function (request, response, next) {
 
   response.header("Access-Control-Allow-Origin", "*");
@@ -59,17 +67,9 @@ application.route("/move-right")
 application.route("/move-up")
   .post(function (request, response) {
 
-    var servoblaster = fs.createWriteStream("/dev/servoblaster");
-
     servoblaster.write("5=+10\n");
 
-    servoblaster.on("error", function (exception) {
-
-      response.status(500).json(exception);
-
-    });
-
-    servoblaster.end();
+    //servoblaster.end();
 
     console.log("moved-up");
 
